@@ -8,7 +8,15 @@ import com.Roguelike.Kim.Main;
 public class Lwjgl3Launcher {
     public static void main(String[] args) {
         if (StartupHelper.startNewJvmIfRequired()) return; // This handles macOS support and helps on Windows.
-        createApplication();
+        try {
+            createApplication();
+        } catch (Exception e) {
+            // 捕获启动时的异常
+            System.err.println("=== 应用启动失败 ===");
+            e.printStackTrace();
+            System.exit(1);
+        }
+
     }
 
     private static Lwjgl3Application createApplication() {
@@ -28,10 +36,12 @@ public class Lwjgl3Launcher {
         //// useful for testing performance, but can also be very stressful to some hardware.
         //// You may also need to configure GPU drivers to fully disable Vsync; this can cause screen tearing.
 
-        configuration.setWindowedMode(1600, 1000);
+        configuration.setWindowedMode(1920, 1080);
+        //configuration.setFullscreenMode(Lwjgl3ApplicationConfiguration.getDisplayMode());
         //// You can change these files; they are in lwjgl3/src/main/resources/ .
         //// They can also be loaded from the root of assets/ .
-        configuration.setWindowIcon("libgdx128.png");
+        configuration.setWindowIcon("icon.png");
+        configuration.setResizable(false);
 
         //// This should improve compatibility with Windows machines with buggy OpenGL drivers, Macs
         //// with Apple Silicon that have to emulate compatibility with OpenGL anyway, and more.
