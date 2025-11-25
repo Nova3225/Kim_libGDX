@@ -84,9 +84,9 @@ public class StartMenuPanel extends Panel {
     }
 
     protected void spriteArrangement(){
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 8; i++) {
             Sprite fish = new Sprite(fishTexture);
-            fish.setSize(0.5f, 0.5f);
+            fish.setSize(0.2f, 0.2f);
             fish.setPosition(- fish.getWidth(), - fish.getHeight());
             fish.setOriginCenter();
             mainSpriteLayer.addComponent(fish);

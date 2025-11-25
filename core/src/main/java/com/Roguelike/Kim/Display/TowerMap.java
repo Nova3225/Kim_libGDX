@@ -70,7 +70,6 @@ public class TowerMap extends Panel{
     @Override
     protected void logic() {
 
-
     }
 
     @Override

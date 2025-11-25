@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class Movement {
 
     float verticalSpeed;
-    float gravity = 0.3f;
+    float gravity = 30f;
 
     public Movement(){
         verticalSpeed = 0;
@@ -30,22 +30,22 @@ public class Movement {
         }
     }
 
-    public void moveWithWASDGravity(Sprite player, float speed, float deltaTime){
+    public void moveWithWASDGravity(Sprite player, float horizentalSpeed, float deltaTime){
         verticalSpeed -= deltaTime * gravity;
         if (Gdx.input.isKeyJustPressed(Input.Keys.W)) {
-            verticalSpeed = 0.1f;
+            verticalSpeed = 10f;
             SoundManager.playSound("Sound/Crash.mp3");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
 
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            player.translateX(-speed * deltaTime);
+            player.translateX(-horizentalSpeed * deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            player.translateX(speed * deltaTime);
+            player.translateX(horizentalSpeed * deltaTime);
         }
-        player.translateY(verticalSpeed);
+        player.translateY(verticalSpeed * deltaTime);
     }
 
     public void limitedInScreen(Sprite player){
