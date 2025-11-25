@@ -16,13 +16,13 @@ public class BackgroundLayer implements Layer{
     private Viewport uiViewport;
     private Stage stage;
 
-    final int WIDTH;
-    final int HEIGHT;
+    final float WIDTH;
+    final float HEIGHT;
 
     private Texture background;
     private Image backgroundImage;
 
-    public BackgroundLayer(Batch batch, int WIDTH, int HEIGHT) {
+    public BackgroundLayer(Batch batch, float WIDTH, float HEIGHT) {
         this.batch = batch;
         this.WIDTH = WIDTH;
         this.HEIGHT = HEIGHT;
@@ -37,6 +37,7 @@ public class BackgroundLayer implements Layer{
         backgroundImage = new Image(background);
         backgroundImage.setPosition(0, 0);
         backgroundImage.setSize(WIDTH, HEIGHT);
+        backgroundImage.setFillParent(true);
         stage.addActor(backgroundImage);
     }
 

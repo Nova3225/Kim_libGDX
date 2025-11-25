@@ -1,9 +1,15 @@
 package com.Roguelike.Kim.Display.Logic;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.Random;
+
 public class Display {
+
+    Random random = new Random();
+    float timer = 0;
 
     public static void limitInScreen(Sprite sprite, Viewport viewport){
         float viewportWidth = viewport.getWorldWidth();
@@ -22,5 +28,7 @@ public class Display {
             sprite.setY(viewportHeight);
         }
     }
+
+
 
 }

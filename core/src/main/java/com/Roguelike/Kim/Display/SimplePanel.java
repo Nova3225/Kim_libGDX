@@ -1,5 +1,6 @@
 package com.Roguelike.Kim.Display;
 
+import com.Roguelike.Kim.Display.Animation.Overlay;
 import com.Roguelike.Kim.Display.Input.Movement;
 import com.Roguelike.Kim.Display.Logic.Display;
 import com.badlogic.gdx.Game;
@@ -10,15 +11,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-public class Simple implements Screen {
+public class SimplePanel implements Screen {
     final Game game;
 
     //主要显示对象
     private SpriteBatch batch;
     private FitViewport viewport;
+    Stage stage;
 
     //显示部件
     private Texture background;
@@ -32,24 +35,32 @@ public class Simple implements Screen {
     float viewportWidth;
     float viewportHeight;
 
-    public Simple(Game game) {
+    public SimplePanel(Game game) {
         this.game = game;
     }
 
     @Override
     public void show() {
+
+
         batch = new SpriteBatch();
         viewport = new FitViewport(16,10);
 
         viewportWidth = viewport.getWorldWidth();
         viewportHeight = viewport.getWorldHeight();
 
+        stage = new Stage(viewport, batch);
 
         image = new Texture("player.png");
         player = new Sprite(image);
         player.setPosition(0, 0);
         player.setSize(3, 3);
         vector = new Vector2();
+
+        Overlay.fadeInAnimation(1, () -> {
+            System.out.println(1);
+        }, stage);
+
     }
 
     @Override

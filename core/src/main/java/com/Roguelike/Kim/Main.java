@@ -1,18 +1,20 @@
 package com.Roguelike.Kim;
 
-import com.Roguelike.Kim.Display.StartMenu;
+import com.Roguelike.Kim.Display.SimplePanel;
+import com.Roguelike.Kim.Display.StartMenuPanel;
 import com.badlogic.gdx.Game;
 
 
 /** {@link com.badlogic.gdx.Game} implementation shared by all platforms. */
 public class Main extends Game {
 
-    StartMenu startMenu;
+    StartMenuPanel startMenuPanel;
+    SimplePanel simplePanel;
 
     @Override
     public void create() {
-        startMenu = new StartMenu(this);
-        setScreen(startMenu);
+        startMenuPanel = new StartMenuPanel(this);
+        setScreen(startMenuPanel);
     }
 
     @Override
@@ -37,6 +39,6 @@ public class Main extends Game {
 
     @Override
     public void dispose() {
-        startMenu.dispose();
+        startMenuPanel.dispose();
     }
 }

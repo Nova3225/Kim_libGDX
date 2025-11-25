@@ -13,10 +13,10 @@ public class UiLayer implements Layer{
     private Viewport uiViewport;
     public Stage stage;
 
-    private final int WIDTH;
-    private final int HEIGHT;
+    private final float WIDTH;
+    private final float HEIGHT;
 
-    public UiLayer(Batch batch, int WIDTH, int HEIGHT){
+    public UiLayer(Batch batch, float WIDTH, float HEIGHT){
         this.batch = batch;
         this.WIDTH = WIDTH;
         this.HEIGHT = HEIGHT;
