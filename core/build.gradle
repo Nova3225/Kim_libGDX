@@ -7,5 +7,6 @@ dependencies {
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
+    implementation "com.github.tommyettinger:libgdx-tiledmappacker:1.12.1.0"
   }
 }

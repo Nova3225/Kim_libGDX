@@ -1,12 +1,12 @@
 package com.Roguelike.Kim.Display;
 
 import com.Roguelike.Kim.Display.Animation.Overlay;
+import com.Roguelike.Kim.Display.Factory.ImageButtonFactory;
 import com.Roguelike.Kim.Display.Layers.Layer;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -40,6 +40,17 @@ public class TowerPanel extends Panel{
             0, HEIGHT / 2,
             WIDTH / 3, HEIGHT / 7
         );
+        buttonLoad.addListener(new ClickListener()  {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Overlay.fadeOutAnimation(0.5f, () -> {
+                    TowerMap towerMap = new TowerMap(game);
+                    game.setScreen(towerMap);
+                    Overlay.fadeInAnimation(0.5f, () -> {}, towerMap.uiLayer.stage);
+                    dispose();
+                }, uiLayer.stage);
+            }
+        });
         uiLayer.addComponent(buttonLoad);
         Label label = ImageButtonFactory.createLabelOnButton(buttonLoad, "Fight");
         uiLayer.addComponent(label);

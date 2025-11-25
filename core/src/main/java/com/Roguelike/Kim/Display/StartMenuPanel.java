@@ -1,15 +1,14 @@
 package com.Roguelike.Kim.Display;
 
 import com.Roguelike.Kim.Display.Animation.Overlay;
+import com.Roguelike.Kim.Display.Factory.ImageButtonFactory;
 import com.Roguelike.Kim.Display.Layers.Layer;
-import com.Roguelike.Kim.Display.Logic.Display;
 import com.Roguelike.Kim.Display.Logic.SwimmingFish;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
@@ -19,8 +18,6 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import com.Roguelike.Kim.Display.Logic.Display;
 
 public class StartMenuPanel extends Panel {
 

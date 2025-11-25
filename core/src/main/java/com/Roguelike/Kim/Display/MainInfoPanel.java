@@ -1,6 +1,7 @@
 package com.Roguelike.Kim.Display;
 
 import com.Roguelike.Kim.Display.Animation.Overlay;
+import com.Roguelike.Kim.Display.Factory.ImageButtonFactory;
 import com.Roguelike.Kim.Display.Layers.Layer;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;

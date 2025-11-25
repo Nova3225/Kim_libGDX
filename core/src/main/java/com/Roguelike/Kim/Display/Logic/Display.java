@@ -1,6 +1,5 @@
 package com.Roguelike.Kim.Display.Logic;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
