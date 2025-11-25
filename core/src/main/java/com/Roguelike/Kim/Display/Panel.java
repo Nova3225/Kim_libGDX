@@ -34,7 +34,7 @@ public abstract class Panel implements Screen {
         batch = new SpriteBatch();
         //初始化层
         backgroundLayer = new BackgroundLayer(batch, WIDTH, HEIGHT);
-        mainSpriteLayer = new MainSpriteLayer(batch, WIDTH, HEIGHT, 16f, 10f);
+        mainSpriteLayer = new MainSpriteLayer(batch, WIDTH, HEIGHT);
         uiLayer = new UiLayer(batch, WIDTH, HEIGHT);
         layers = new ArrayList<>();
         layers.add(backgroundLayer);
@@ -43,12 +43,12 @@ public abstract class Panel implements Screen {
 
 
         init();
-        Arrangement();
+        arrangement();
     }
 
     protected abstract void init();
 
-    protected abstract void Arrangement();
+    protected abstract void arrangement();
 
     @Override
     public void show() {

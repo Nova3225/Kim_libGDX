@@ -3,6 +3,7 @@ package com.Roguelike.Kim.Display;
 import com.Roguelike.Kim.Display.Animation.Overlay;
 import com.Roguelike.Kim.Display.Factory.ImageButtonFactory;
 import com.Roguelike.Kim.Display.Layers.Layer;
+import com.Roguelike.Kim.SoundManager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -23,7 +24,7 @@ public class TowerPanel extends Panel{
         super(game);
 
         init();
-        Arrangement();
+        arrangement();
     }
 
     protected void init() {
@@ -32,7 +33,7 @@ public class TowerPanel extends Panel{
         buttonTextureDown = new Texture("Button/button_brown_close.png");
     }
 
-    protected void Arrangement() {
+    protected void arrangement() {
         buttonLoad = ImageButtonFactory.createImageButton(
             buttonTexture,
             buttonTextureDown,
@@ -43,6 +44,7 @@ public class TowerPanel extends Panel{
         buttonLoad.addListener(new ClickListener()  {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
                     TowerMap towerMap = new TowerMap(game);
                     game.setScreen(towerMap);
@@ -65,6 +67,7 @@ public class TowerPanel extends Panel{
         buttonLoad.addListener(new ClickListener()  {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
                     MainInfoPanel mainInfoPanel = new MainInfoPanel(game);
                     game.setScreen(mainInfoPanel);
@@ -87,6 +90,7 @@ public class TowerPanel extends Panel{
         buttonLoad.addListener(new ClickListener()  {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
                     StartMenuPanel startMenuPanel = new StartMenuPanel(game);
                     game.setScreen(startMenuPanel);

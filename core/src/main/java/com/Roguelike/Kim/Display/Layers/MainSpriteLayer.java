@@ -1,5 +1,8 @@
 package com.Roguelike.Kim.Display.Layers;
 
+import com.Roguelike.Kim.Main;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -23,12 +26,12 @@ public class MainSpriteLayer implements Layer{
 
     List<Sprite> sprites;
 
-    public MainSpriteLayer(Batch batch, float WIDTH, float HEIGHT, float widthTiles, float heightTiles){
+    public MainSpriteLayer(Batch batch, float WIDTH, float HEIGHT){
         this.batch = batch;
         this.WIDTH = WIDTH;
         this.HEIGHT = HEIGHT;
-        this.widthTiles = widthTiles;
-        this.heightTiles = heightTiles;
+        this.widthTiles = Main.WIDTHTILES;
+        this.heightTiles = Main.HEIGHTTILES;
 
         spriteViewport = new FitViewport(widthTiles, heightTiles);
 
@@ -41,10 +44,11 @@ public class MainSpriteLayer implements Layer{
         batch.setProjectionMatrix(spriteViewport.getCamera().combined);
 
         batch.begin();
-        //draw components here:
+
         for (Sprite sprite : sprites){
             sprite.draw(batch);
         }
+
         batch.end();
     }
 

@@ -12,14 +12,14 @@ public class ExamplePanel extends Panel{
         super(game);
 
         init();
-        Arrangement();
+        arrangement();
     }
 
     protected void init() {
 
     }
 
-    protected void Arrangement() {
+    protected void arrangement() {
 
     }
 
@@ -55,7 +55,9 @@ public class ExamplePanel extends Panel{
 
     @Override
     public void resize(int i, int i1) {
-        backgroundLayer.update(i, i1, true);
+        for (Layer layer : layers){
+            layer.update(i, i1, true);
+        }
     }
 
     @Override

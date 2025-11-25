@@ -41,6 +41,8 @@ public class BackgroundLayer implements Layer{
         stage.addActor(backgroundImage);
     }
 
+
+
     @Override
     public void draw(float v){
         stage.getViewport().apply();

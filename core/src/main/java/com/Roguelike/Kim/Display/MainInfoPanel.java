@@ -3,6 +3,7 @@ package com.Roguelike.Kim.Display;
 import com.Roguelike.Kim.Display.Animation.Overlay;
 import com.Roguelike.Kim.Display.Factory.ImageButtonFactory;
 import com.Roguelike.Kim.Display.Layers.Layer;
+import com.Roguelike.Kim.SoundManager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -22,7 +23,7 @@ public class MainInfoPanel extends Panel{
         super(game);
 
         init();
-        Arrangement();
+        arrangement();
     }
 
     protected void init() {
@@ -30,7 +31,7 @@ public class MainInfoPanel extends Panel{
         buttonTextureDown = new Texture("Button/button_brown_close.png");
     }
 
-    protected void Arrangement() {
+    protected void arrangement() {
         backgroundLayer.setBackground("Background/Start.png");
 
         buttonLoad = ImageButtonFactory.createImageButton(
@@ -43,6 +44,7 @@ public class MainInfoPanel extends Panel{
         buttonLoad.addListener(new ClickListener()  {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
                     TowerPanel towerPanel = new TowerPanel(game);
                     game.setScreen(towerPanel);

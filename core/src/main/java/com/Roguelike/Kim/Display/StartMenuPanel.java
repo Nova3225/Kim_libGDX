@@ -4,6 +4,7 @@ import com.Roguelike.Kim.Display.Animation.Overlay;
 import com.Roguelike.Kim.Display.Factory.ImageButtonFactory;
 import com.Roguelike.Kim.Display.Layers.Layer;
 import com.Roguelike.Kim.Display.Logic.SwimmingFish;
+import com.Roguelike.Kim.SoundManager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -37,7 +38,7 @@ public class StartMenuPanel extends Panel {
         super(game);
 
         init();
-        Arrangement();
+        arrangement();
     }
 
     protected void init(){
@@ -52,7 +53,8 @@ public class StartMenuPanel extends Panel {
         swimmingFishes = new ArrayList<>();
     }
 
-    protected void Arrangement() {
+    @Override
+    protected void arrangement() {
         //对层进行设置
         backgroundLayer.setBackground("Background/Start.png");
 
@@ -66,6 +68,7 @@ public class StartMenuPanel extends Panel {
         StartButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
                     game.setScreen(new TowerPanel(game));
 
@@ -75,9 +78,15 @@ public class StartMenuPanel extends Panel {
         uiLayer.addComponent(StartButton);
         uiLayer.addComponent(ImageButtonFactory.createLabelOnButton(StartButton, "Start Game!"));
 
+
+
+
+    }
+
+    protected void spriteArrangement(){
         for (int i = 0; i < 100; i++) {
             Sprite fish = new Sprite(fishTexture);
-            fish.setSize(1, 1);
+            fish.setSize(0.5f, 0.5f);
             fish.setPosition(- fish.getWidth(), - fish.getHeight());
             fish.setOriginCenter();
             mainSpriteLayer.addComponent(fish);
@@ -85,8 +94,12 @@ public class StartMenuPanel extends Panel {
             SwimmingFish swimmingFish = new SwimmingFish();
             swimmingFishes.add(swimmingFish);
         }
+    }
 
-
+    @Override
+    public void show() {
+        super.show();
+        spriteArrangement();
     }
 
 
@@ -98,7 +111,7 @@ public class StartMenuPanel extends Panel {
     protected void logic() {
         timer += Gdx.graphics.getDeltaTime();
         for (int i = 0; i < fishes.size(); i++){
-            swimmingFishes.get(i).acrossAnimation(fishes.get(i), mainSpriteLayer.spriteViewport, 2, 4, 0, i);
+            swimmingFishes.get(i).acrossAnimation(fishes.get(i), mainSpriteLayer.spriteViewport, 2, 8, 0, i);
         }
     }
 
