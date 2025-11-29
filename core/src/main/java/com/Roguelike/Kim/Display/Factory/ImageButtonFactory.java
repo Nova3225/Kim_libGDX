@@ -10,6 +10,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class ImageButtonFactory {
 
+    public static ImageButton createWoodImageButton(float x, float y, float width, float height){
+        Texture buttonTexture = new Texture("Button/button_brown.png");
+        Texture buttonTextureDown = new Texture("Button/button_brown_close.png");
+        return createImageButton(buttonTexture, buttonTextureDown, buttonTextureDown, x, y, width, height);
+    }
+
     public static ImageButton createImageButton(Texture imageUp, Texture imageDown, Texture imageOver , float x, float y, float width, float height){
         ImageButton.ImageButtonStyle style = new ImageButton.ImageButtonStyle();
         style.imageUp = new TextureRegionDrawable(new TextureRegion(imageUp)){

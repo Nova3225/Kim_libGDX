@@ -1,7 +1,7 @@
 package com.Roguelike.Kim.Display.Input;
 
 import com.Roguelike.Kim.Main;
-import com.Roguelike.Kim.SoundManager;
+import com.Roguelike.Kim.Display.SoundManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;

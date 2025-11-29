@@ -20,7 +20,7 @@ public class SwimmingFish {
     public void acrossAnimation(Sprite fish, Viewport viewport, float sinSpeed, float moveSpeed, float sinAmount, int num){
         timer += Gdx.graphics.getDeltaTime();
         if (!started){
-            if (timer < num / 4.0f){
+            if (timer < num / 4f){
                 return;
             }else{
                 sinVariation = random.nextFloat(0,3.14f);

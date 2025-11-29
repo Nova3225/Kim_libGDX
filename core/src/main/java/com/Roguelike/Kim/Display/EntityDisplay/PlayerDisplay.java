@@ -1,5 +1,6 @@
 package com.Roguelike.Kim.Display.EntityDisplay;
 
+import com.Roguelike.Kim.Game.Player;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 

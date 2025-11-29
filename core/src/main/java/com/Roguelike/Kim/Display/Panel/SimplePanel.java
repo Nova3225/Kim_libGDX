@@ -1,4 +1,4 @@
-package com.Roguelike.Kim.Display;
+package com.Roguelike.Kim.Display.Panel;
 
 import com.Roguelike.Kim.Display.Animation.Overlay;
 import com.Roguelike.Kim.Display.Input.Movement;

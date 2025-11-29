@@ -1,6 +1,7 @@
-package com.Roguelike.Kim.Display;
+package com.Roguelike.Kim.Display.Panel;
 
 import com.Roguelike.Kim.Display.Layers.Layer;
+import com.Roguelike.Kim.GameManager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -8,8 +9,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class ExamplePanel extends Panel{
 
-    public ExamplePanel(Game game){
-        super(game);
+    public ExamplePanel(Game game, GameManager gameManager){
+        super(game, gameManager);
 
         init();
         arrangement();

@@ -1,9 +1,10 @@
-package com.Roguelike.Kim.Display;
+package com.Roguelike.Kim.Display.Panel;
 
 import com.Roguelike.Kim.Display.Layers.BackgroundLayer;
 import com.Roguelike.Kim.Display.Layers.Layer;
 import com.Roguelike.Kim.Display.Layers.MainSpriteLayer;
 import com.Roguelike.Kim.Display.Layers.UiLayer;
+import com.Roguelike.Kim.GameManager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -24,9 +25,12 @@ public abstract class Panel implements Screen {
     public final float WIDTH;
     public final float HEIGHT;
 
-    public Panel(Game game){
+    public GameManager gameManager;
+
+    public Panel(Game game, GameManager gameManager){
         //导入游戏数据
         this.game = game;
+        this.gameManager = gameManager;
         //常量
         WIDTH = Gdx.graphics.getWidth();
         HEIGHT = Gdx.graphics.getHeight();

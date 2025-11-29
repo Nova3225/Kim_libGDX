@@ -1,40 +1,46 @@
 package com.Roguelike.Kim.Game;
 
-import com.badlogic.gdx.math.MathUtils;
+public class Entity{
 
-public abstract class Entity {
+    String name;
+    int health;
+    int maxHealth;
+    int attack;
 
-    private String name;
+    public Entity(){
 
-    private int health; // 数值范围：0 ~ maxHealth
-    private int maxHealth;
-    private int attack;
+    }
 
-    public Entity(String name){
+    public Entity(String name, int health, int maxHealth, int attack){
         this.name = name;
-        maxHealth = 1000;
-        health = maxHealth;
-        attack = 100;
+        this.health = health;
+        this.maxHealth = maxHealth;
+        this.attack = attack;
     }
 
-    public void recoverHealth(int amount){
-        setHealth(getHealth() + amount);
-    }
-
-    public int getHealth(){
+    public int getHealth() {
         return health;
     }
 
-    public void setHealth(int finalHealth){
-        health = MathUtils.clamp(finalHealth, 0, maxHealth);
+    public void setHealth(int health) {
+        this.health = health;
     }
 
-    public int getMaxHealth(){
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public int getMaxHealth() {
         return maxHealth;
     }
 
-    public void setMaxHealth(int finalMaxHealth){
-        maxHealth = MathUtils.clamp(finalMaxHealth, 0, 9999999);
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
     }
+
 
 }

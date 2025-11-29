@@ -1,11 +1,9 @@
 package com.Roguelike.Kim;
 
-import com.Roguelike.Kim.Display.SimplePanel;
-import com.Roguelike.Kim.Display.StartMenuPanel;
+import com.Roguelike.Kim.Display.Panel.SimplePanel;
+import com.Roguelike.Kim.Display.SoundManager;
+import com.Roguelike.Kim.Display.Panel.StartMenuPanel;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 
 
 /** {@link com.badlogic.gdx.Game} implementation shared by all platforms. */
@@ -19,9 +17,12 @@ public class Main extends Game {
     public static final float WIDTHTILES = 16;
     public static final float HEIGHTTILES = 10;
 
+    GameManager gameManager;
+
     @Override
     public void create() {
-        startMenuPanel = new StartMenuPanel(this);
+        gameManager = new GameManager();
+        startMenuPanel = new StartMenuPanel(this, gameManager);
         setScreen(startMenuPanel);
 
         //soundManager = new SoundManager();

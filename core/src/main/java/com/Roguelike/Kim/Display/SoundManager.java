@@ -1,4 +1,4 @@
-package com.Roguelike.Kim;
+package com.Roguelike.Kim.Display;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;

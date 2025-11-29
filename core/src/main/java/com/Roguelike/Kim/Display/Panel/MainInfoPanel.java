@@ -1,9 +1,10 @@
-package com.Roguelike.Kim.Display;
+package com.Roguelike.Kim.Display.Panel;
 
 import com.Roguelike.Kim.Display.Animation.Overlay;
 import com.Roguelike.Kim.Display.Factory.ImageButtonFactory;
 import com.Roguelike.Kim.Display.Layers.Layer;
-import com.Roguelike.Kim.SoundManager;
+import com.Roguelike.Kim.Display.SoundManager;
+import com.Roguelike.Kim.GameManager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -16,28 +17,21 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MainInfoPanel extends Panel{
 
     ImageButton buttonLoad;
-    Texture buttonTexture;
-    Texture buttonTextureDown;
 
-    public MainInfoPanel(Game game){
-        super(game);
+    public MainInfoPanel(Game game, GameManager gameManager){
+        super(game, gameManager);
 
         init();
         arrangement();
     }
 
     protected void init() {
-        buttonTexture = new Texture("Button/button_brown.png");
-        buttonTextureDown = new Texture("Button/button_brown_close.png");
     }
 
     protected void arrangement() {
         backgroundLayer.setBackground("Background/Start.png");
 
-        buttonLoad = ImageButtonFactory.createImageButton(
-            buttonTexture,
-            buttonTextureDown,
-            buttonTextureDown,
+        buttonLoad = ImageButtonFactory.createWoodImageButton(
             WIDTH /2 - WIDTH / 6, 0,
             WIDTH / 3, HEIGHT / 6
         );
@@ -46,7 +40,7 @@ public class MainInfoPanel extends Panel{
             public void clicked(InputEvent event, float x, float y) {
                 SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
-                    TowerPanel towerPanel = new TowerPanel(game);
+                    TowerPanel towerPanel = new TowerPanel(game, gameManager);
                     game.setScreen(towerPanel);
                     Overlay.fadeInAnimation(0.5f, () -> {}, towerPanel.uiLayer.stage);
                     dispose();

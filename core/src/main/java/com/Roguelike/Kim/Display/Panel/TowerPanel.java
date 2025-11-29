@@ -1,9 +1,10 @@
-package com.Roguelike.Kim.Display;
+package com.Roguelike.Kim.Display.Panel;
 
 import com.Roguelike.Kim.Display.Animation.Overlay;
 import com.Roguelike.Kim.Display.Factory.ImageButtonFactory;
 import com.Roguelike.Kim.Display.Layers.Layer;
-import com.Roguelike.Kim.SoundManager;
+import com.Roguelike.Kim.Display.SoundManager;
+import com.Roguelike.Kim.GameManager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -17,11 +18,9 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class TowerPanel extends Panel{
 
     ImageButton buttonLoad;
-    Texture buttonTexture;
-    Texture buttonTextureDown;
 
-    public TowerPanel(Game game){
-        super(game);
+    public TowerPanel(Game game, GameManager gameManager){
+        super(game, gameManager);
 
         init();
         arrangement();
@@ -29,24 +28,16 @@ public class TowerPanel extends Panel{
 
     protected void init() {
         backgroundLayer.setBackground("Background/Start.png");
-        buttonTexture = new Texture("Button/button_brown.png");
-        buttonTextureDown = new Texture("Button/button_brown_close.png");
     }
 
     protected void arrangement() {
-        buttonLoad = ImageButtonFactory.createImageButton(
-            buttonTexture,
-            buttonTextureDown,
-            buttonTextureDown,
-            0, HEIGHT / 2,
-            WIDTH / 3, HEIGHT / 7
-        );
+        buttonLoad = ImageButtonFactory.createWoodImageButton(0, HEIGHT / 2, WIDTH / 3, HEIGHT / 7);
         buttonLoad.addListener(new ClickListener()  {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
-                    TowerMap towerMap = new TowerMap(game);
+                    TowerMap towerMap = new TowerMap(game, gameManager);
                     game.setScreen(towerMap);
                     Overlay.fadeInAnimation(0.5f, () -> {}, towerMap.uiLayer.stage);
                     dispose();
@@ -57,19 +48,13 @@ public class TowerPanel extends Panel{
         Label label = ImageButtonFactory.createLabelOnButton(buttonLoad, "Fight");
         uiLayer.addComponent(label);
 
-        buttonLoad = ImageButtonFactory.createImageButton(
-            buttonTexture,
-            buttonTextureDown,
-            buttonTextureDown,
-            WIDTH / 3, HEIGHT / 2,
-            WIDTH / 3, HEIGHT / 7
-        );
+        buttonLoad = ImageButtonFactory.createWoodImageButton(WIDTH / 3, HEIGHT / 2, WIDTH / 3, HEIGHT / 7);
         buttonLoad.addListener(new ClickListener()  {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
-                    MainInfoPanel mainInfoPanel = new MainInfoPanel(game);
+                    MainInfoPanel mainInfoPanel = new MainInfoPanel(game, gameManager);
                     game.setScreen(mainInfoPanel);
                     Overlay.fadeInAnimation(0.5f, () -> {}, mainInfoPanel.uiLayer.stage);
                     dispose();
@@ -80,24 +65,16 @@ public class TowerPanel extends Panel{
         label = ImageButtonFactory.createLabelOnButton(buttonLoad, "Info");
         uiLayer.addComponent(label);
 
-        buttonLoad = ImageButtonFactory.createImageButton(
-            buttonTexture,
-            buttonTextureDown,
-            buttonTextureDown,
-            WIDTH / 3 * 2, HEIGHT / 2,
-            WIDTH / 3, HEIGHT / 7
-        );
+        buttonLoad = ImageButtonFactory.createWoodImageButton(WIDTH / 3 * 2, HEIGHT / 2, WIDTH / 3, HEIGHT / 7);
         buttonLoad.addListener(new ClickListener()  {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 SoundManager.playClickSound();
                 Overlay.fadeOutAnimation(0.5f, () -> {
-                    StartMenuPanel startMenuPanel = new StartMenuPanel(game);
+                    StartMenuPanel startMenuPanel = new StartMenuPanel(game, gameManager);
                     game.setScreen(startMenuPanel);
                     Overlay.fadeInAnimation(0.5f, () -> {}, startMenuPanel.uiLayer.stage);
                     dispose();
-//                    dispose();
-//                    Gdx.app.exit();
                 }, uiLayer.stage);
             }
         });
